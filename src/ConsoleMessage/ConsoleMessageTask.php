@@ -9,15 +9,22 @@
 namespace ConsoleMessage;
 
 use SimplePhpQueue\Task\Task;
+use Symfony\Component\Console\Output\OutputInterface;
 
 class ConsoleMessageTask implements  Task {
 
+    private $consoleOutput;
     private $decodedMessage;
+
+    public function __construct(OutputInterface $consoleOutput) {
+        $this->consoleOutput = $consoleOutput;
+    }
+
     /**
      * @param $task : JSON
      *  {
      *      "text" : "message text",
-     *      "color" : ["green", "red", "blue"]
+     *      "color" : ["green" | "red" | "blue"]
      *  }
      */
     public function manage($message) {
@@ -35,6 +42,10 @@ class ConsoleMessageTask implements  Task {
     }
 
     private function printMessage() {
-        echo $this->decodedMessage['text']."\n";
+        $message = $this->decodedMessage['text'];
+        $color = $this->decodedMessage['color'];
+
+        $this->consoleOutput->writeln("<fg=$color>$message</fg=$color>");
+
     }
 }

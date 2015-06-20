@@ -58,22 +58,22 @@ class ConsoleMessageWorkerCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $redisQueue = new RedisQueue(
-            new Client(array(
-                'host' => $input->getOption('host'),
-                'port' => $input->getOption('port'),
-                'database' => $input->getOption('database'),
-                'schema' => 'tcp'
-            )),
-            $input->getOption('queue')
-        );
+        $output->writeln('<info>Starting...</info>');
 
-        // create a log channel
+        $redisClient = new Client(array(
+            'host' => $input->getOption('host'),
+            'port' => $input->getOption('port'),
+            'database' => $input->getOption('database'),
+            'schema' => 'tcp'
+        ));
+        $redisQueue = new RedisQueue($redisClient, $input->getOption('queue'));
+
         $logger = new Logger('ConsoleMessage');
         $logger->pushHandler(new StreamHandler(__DIR__.'/../../logs/console_message.log', Logger::INFO));
-
-        $jsonToCsvWorker = new QueueWorker($redisQueue, new ConsoleMessageTask());
+        $jsonToCsvWorker = new QueueWorker($redisQueue, new ConsoleMessageTask($output));
         $jsonToCsvWorker->setLogger($logger);
         $jsonToCsvWorker->start();
+
+        $output->writeln('<info>End.</info>');
     }
 }
