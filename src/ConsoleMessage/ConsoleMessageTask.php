@@ -21,10 +21,10 @@ class ConsoleMessageTask implements  Task {
     }
 
     /**
-     * @param $task : JSON
+     * @param $message : JSON
      *  {
      *      "text" : "message text",
-     *      "color" : ["green" | "red" | "blue"]
+     *      "color" : ["green" | "red" | "blue" | ...]
      *  }
      */
     public function manage($message) {
