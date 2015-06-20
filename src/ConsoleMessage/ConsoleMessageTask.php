@@ -43,9 +43,14 @@ class ConsoleMessageTask implements  Task {
 
     private function printMessage() {
         $message = $this->decodedMessage['text'];
-        $color = $this->decodedMessage['color'];
+        $color = $this->getColor();
 
         $this->consoleOutput->writeln("<fg=$color>$message</fg=$color>");
+    }
 
+    private function getColor() {
+        if (array_key_exists('color', $this->decodedMessage))
+            return $this->decodedMessage['color'];
+        return "white";
     }
 }
