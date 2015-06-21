@@ -24,7 +24,7 @@ The command is called "". Running in the following way you will see the help:
 
 The availabe options are:
 
-- queue: name of the queue to use in redis.
-- host: Redis host.
-- port: Redis port.
-- database: Redis database.
+    --queue       Queue name [default: "queue.console-message"]
+    --host        Redis host [default: "localhost"]
+    --port        Redis port [default: 6379]
+    --database    Redis database [default: 0]
