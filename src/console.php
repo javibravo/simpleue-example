@@ -8,4 +8,5 @@ use ConsoleMessage\ConsoleMessageWorkerCommand;
 
 $application = new Application();
 $application->add(new ConsoleMessageWorkerCommand());
+$application->add(new \ConsoleMessage\ConsoleMessageWorkerSqsCommand());
 $application->run();

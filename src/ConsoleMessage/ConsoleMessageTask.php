@@ -13,6 +13,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ConsoleMessageTask implements  Task {
 
+    const STOP_INSTRUCTION = "STOP";
+
     private $consoleOutput;
     private $decodedMessage;
 
@@ -52,5 +54,9 @@ class ConsoleMessageTask implements  Task {
         if (array_key_exists('color', $this->decodedMessage))
             return $this->decodedMessage['color'];
         return "white";
+    }
+
+    public function isStopInstruction($task) {
+        return (strtoupper($task) === self::STOP_INSTRUCTION);
     }
 }
