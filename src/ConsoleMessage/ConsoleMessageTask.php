@@ -56,7 +56,7 @@ class ConsoleMessageTask implements  Task {
         return "white";
     }
 
-    public function isStopInstruction($task) {
+    public function mustStop($task) {
         return (strtoupper($task) === self::STOP_INSTRUCTION);
     }
 }
