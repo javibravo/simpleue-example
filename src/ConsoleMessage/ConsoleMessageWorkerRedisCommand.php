@@ -18,19 +18,19 @@ use SimplePhpQueue\Worker\QueueWorker;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
-class ConsoleMessageWorkerCommand extends Command
+class ConsoleMessageWorkerRedisCommand extends Command
 {
     protected function configure()
     {
         $this
             ->setName('console-message:redis')
-            ->setDescription('Show in the terminal messages sent to a redis queue')
+            ->setDescription('Show in the terminal messages received redis queue')
             ->addOption(
                 'queue',
                 null,
                 InputOption::VALUE_REQUIRED,
                 'Queue name',
-                'queue.console-message'
+                'queue-console-message'
             )
             ->addOption(
                 'host',
@@ -69,7 +69,7 @@ class ConsoleMessageWorkerCommand extends Command
         $redisQueue = new RedisQueue($redisClient, $input->getOption('queue'));
 
         $logger = new Logger('ConsoleMessage');
-        $logger->pushHandler(new StreamHandler(__DIR__.'/../../logs/console_message.log', Logger::INFO));
+        $logger->pushHandler(new StreamHandler(__DIR__.'/../../logs/redis_console_message.log', Logger::INFO));
         $jsonToCsvWorker = new QueueWorker($redisQueue, new ConsoleMessageTask($output));
         $jsonToCsvWorker->setLogger($logger);
         $jsonToCsvWorker->start();

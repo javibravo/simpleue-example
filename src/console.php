@@ -4,9 +4,10 @@
 require __DIR__.'/../vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
-use ConsoleMessage\ConsoleMessageWorkerCommand;
+use ConsoleMessage\ConsoleMessageWorkerRedisCommand;
+use ConsoleMessage\ConsoleMessageWorkerSqsCommand;
 
 $application = new Application();
-$application->add(new ConsoleMessageWorkerCommand());
-$application->add(new \ConsoleMessage\ConsoleMessageWorkerSqsCommand());
+$application->add(new ConsoleMessageWorkerRedisCommand());
+$application->add(new ConsoleMessageWorkerSqsCommand());
 $application->run();
