@@ -1,10 +1,10 @@
 SimplePHPQueue Example - Colored console messages
 =================================================
 
-Example of use SimplePhpQueue.
+Example of use [SimplePhpQueue](https://github.com/javibravo/simple-php-queue-example).
 
-Command which receive a JSON $task in a redis queue. The task contains a message
-and a color, to be printed in the console. A JSON example:
+Commands which receive a JSON $task from a queue. The task contains a message
+and a color, to be printed in the Terminal. A JSON example:
 
 ```json
 {
@@ -13,18 +13,29 @@ and a color, to be printed in the console. A JSON example:
 }
 ```
 
+It contains one command for each queue system:
+
+   - Redis : console-message:redis
+   - AWS SQS : console-message:sqs
+
+
+Install
+-------
+
+Install dependencies,
+
+```
+composer install
+```
+
+
 Usage
 -----
 
-The command is called "". Running in the following way you will see the help:
+Show command help
 
 ```
-./console console-message:redis --help
+>$ ./console console-message:redis --help
+
+>$ ./console console-message:sqs --help
 ```
-
-The availabe options are:
-
-    --queue       Queue name [default: "queue.console-message"]
-    --host        Redis host [default: "localhost"]
-    --port        Redis port [default: 6379]
-    --database    Redis database [default: 0]

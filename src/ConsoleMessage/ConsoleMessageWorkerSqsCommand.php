@@ -51,19 +51,12 @@ class ConsoleMessageWorkerSqsCommand extends Command
     {
         $output->writeln('<info>Starting...</info>');
 
-//        $sqsClient = new SqsClient([
-//            'profile' => 'sqs',
-//            'region' => 'eu-west-1',
-//            'version' => 'latest'
-//        ]);
-
         $sqsClient = new SqsClient([
             'profile' => $input->getOption('aws-profile'),
             'region' => $input->getOption('aws-region'),
             'version' => 'latest'
         ]);
 
-//        $sqsQueue = new AwsSqsQueue($sqsClient, 'test_sqs_javi');
         $sqsQueue = new AwsSqsQueue($sqsClient, $input->getOption('queue'));
 
         $logger = new Logger('ConsoleMessage');
