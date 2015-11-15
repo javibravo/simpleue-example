@@ -15,8 +15,8 @@ and a color, to be printed in the Terminal. A JSON example:
 
 It contains one command for each queue system:
 
-   - Redis : console-message:redis
-   - AWS SQS : console-message:sqs
+   - **Redis** : console-message:redis
+   - **AWS SQS** : console-message:sqs
 
 
 Install

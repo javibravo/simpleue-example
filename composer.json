@@ -14,7 +14,9 @@
         "php": ">=5.3.0",
         "javibravo/simple-php-queue": "dev-master",
         "symfony/console": "2.7.*",
-        "monolog/monolog": "1.13.*"
+        "monolog/monolog": "1.13.*",
+        "predis/predis": "^1.0",
+        "aws/aws-sdk-php": "^3.9"
     },
     "autoload": {
       "psr-4": {"ConsoleMessage\\": "src/ConsoleMessage"}
