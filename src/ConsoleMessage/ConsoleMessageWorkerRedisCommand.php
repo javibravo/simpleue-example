@@ -70,9 +70,9 @@ class ConsoleMessageWorkerRedisCommand extends Command
 
         $logger = new Logger('ConsoleMessage');
         $logger->pushHandler(new StreamHandler(__DIR__.'/../../logs/redis_console_message.log', Logger::INFO));
-        $jsonToCsvWorker = new QueueWorker($redisQueue, new ConsoleMessageTask($output));
-        $jsonToCsvWorker->setLogger($logger);
-        $jsonToCsvWorker->start();
+        $consoleMessagesWorker = new QueueWorker($redisQueue, new ConsoleMessageTask($output));
+        $consoleMessagesWorker->setLogger($logger);
+        $consoleMessagesWorker->start();
 
         $output->writeln('<info>End.</info>');
     }
