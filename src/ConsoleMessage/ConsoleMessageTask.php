@@ -8,10 +8,10 @@
 
 namespace ConsoleMessage;
 
-use Simpleue\Task\Task;
+use Simpleue\Job\Job;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class ConsoleMessageTask implements  Task {
+class ConsoleMessageJob implements  Job {
 
     const STOP_INSTRUCTION = "STOP";
 
@@ -56,7 +56,7 @@ class ConsoleMessageTask implements  Task {
         return "white";
     }
 
-    public function mustStop($task) {
-        return (strtoupper($task) === self::STOP_INSTRUCTION);
+    public function mustStop($job) {
+        return (strtoupper($job) === self::STOP_INSTRUCTION);
     }
 }

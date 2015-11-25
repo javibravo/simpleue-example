@@ -70,7 +70,7 @@ class ConsoleMessageWorkerRedisCommand extends Command
 
         $logger = new Logger('ConsoleMessage');
         $logger->pushHandler(new StreamHandler(__DIR__.'/../../logs/redis_console_message.log', Logger::INFO));
-        $consoleMessagesWorker = new QueueWorker($redisQueue, new ConsoleMessageTask($output));
+        $consoleMessagesWorker = new QueueWorker($redisQueue, new ConsoleMessageJob($output));
         $consoleMessagesWorker->setLogger($logger);
         $consoleMessagesWorker->start();
 
