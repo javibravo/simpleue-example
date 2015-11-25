@@ -1,7 +1,7 @@
-SimplePHPQueue Example - Colored console messages
+Simpleue Example - Colored console messages
 =================================================
 
-Example of use [SimplePhpQueue](https://github.com/javibravo/simple-php-queue-example).
+Example of use for [Simpleue](https://github.com/javibravo/simpleue).
 
 Commands which receive a JSON $task from a queue. The task contains a message
 and a color, to be printed in the Terminal. A JSON example:

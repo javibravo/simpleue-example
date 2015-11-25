@@ -12,11 +12,11 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Predis\Client;
-use SimplePhpQueue\Queue\RedisQueue;
-use SimplePhpQueue\Worker\QueueWorker;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+use Predis\Client;
+use Simpleue\Queue\RedisQueue;
+use Simpleue\Worker\QueueWorker;
 
 class ConsoleMessageWorkerRedisCommand extends Command
 {

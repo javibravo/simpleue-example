@@ -8,15 +8,15 @@
 
 namespace ConsoleMessage;
 
-use Aws\Sqs\SqsClient;
-use SimplePhpQueue\Queue\AwsSqsQueue;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputOption;
-use SimplePhpQueue\Worker\QueueWorker;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+use Aws\Sqs\SqsClient;
+use Simpleue\Queue\AwsSqsQueue;
+use Simpleue\Worker\QueueWorker;
 
 class ConsoleMessageWorkerSqsCommand extends Command
 {

@@ -8,7 +8,7 @@
 
 namespace ConsoleMessage;
 
-use SimplePhpQueue\Task\Task;
+use Simpleue\Task\Task;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class ConsoleMessageTask implements  Task {
